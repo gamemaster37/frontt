@@ -22,4 +22,5 @@ export class HeroSearchComponent implements OnInit {
       this.hero = this._heroService.buscarHeroe(params['busqueda']);
     })
   }
+  
 }

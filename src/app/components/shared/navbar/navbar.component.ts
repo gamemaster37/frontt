@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
   buscarHeroe(palabra:string){
+    event.preventDefault()
     this._router.navigate(['/search',palabra]);
   }
 

@@ -57,6 +57,59 @@ export class HeroService {
             }
     ];
 
+    private villain:Hero[]=
+    [
+        {
+          nombre: "Magneto",
+          bio: "Poderoso mutante con la habilidad de generar y controlar campos magnéticos mentales, Magneto ha sido el más eminente enemigo que hayan tenido los X-Men desde su creación. En sus primeras apariciones su motivación se debía a la megalomanía, pero posteriormente los guionistas han dado cuerpo al personaje y su origen, revelando que es un superviviente del holocausto judío (Shoah), cuyas acciones se encaminan a la protección de la raza mutante y evitar que sufra un destino similar.",
+          img: "assets/img/magneto.png",
+          aparicion: "1963-9-01",
+          casa:"Marvel"
+        },
+        {
+          nombre: "Joker",
+          bio: "Si bien sus orígenes y rasgos han variado con el transcurso del tiempo, por lo general se le asocia con una personalidad psicópata con un humor sádico y retorcido, lo que le ha llevado a ser catalogado como la antítesis de Batman. Con la excepción de una etapa en la que mantuvo un rol de bromista simple.",
+          img: "assets/img/joker.png",
+          aparicion: "1939-05-01",
+          casa:"DC"
+        },
+        {
+          nombre: "Lex Luthor",
+          bio: "Luthor es un rico hombre de negocios, uno de los hombres más inteligentes del Universo DC, considerado por muchos el humano mas inteligente en DC y cuenta con las tecnologías más avanzadas en su empresa, superando a las de Bruce Wayne. Los objetivos de Lex Luthor normalmente se centran en matar a Superman, el principal obstáculo para el logro de sus propósitos megalómanos.",
+          img: "assets/img/lex.png",
+          aparicion: "1940-04-01",
+          casa: "DC"
+        },
+        {
+          nombre: "Galactus",
+          bio: "En el universo Marvel, Galactus es un ser cósmico que necesita consumir planetas para calmar su hambre, por lo que recurre a la ayuda de heraldos que él mismo nombra. Asimismo, ha sido descrito como una fuerza que el universo necesita para su propio equilibrio.",
+          img: "assets/img/galactus.png",
+          aparicion: "1966-03-01",
+          casa:"Marvel"
+        },
+        {
+          nombre: "Darkseid",
+          bio: "Él es el padre de Orión, Kalibak, Grayven y Grial. Como el gobernante tiránico del planeta Apokolips, el objetivo final de Darkseid es conquistar el universo y eliminar todo el libre albedrío y los seres sensibles. Uno de los seres más poderosos en el Universo DC, el personaje se convirtió en un villano de Superman y es considerado el archienemigo de la Liga de la Justicia.",
+          img: "assets/img/darkseid.png",
+          aparicion: "1971-02-01",
+          casa: "DC"
+        },
+        {
+          nombre: "Loki",
+          bio: "El dios de las mentiras (o el dios del mal, como elijáis vosotros), es el hermanastro de Thor, con el cual mantiene una enemistad que durará toda la eternidad. Egocéntrico y egoísta, solo lucha por lo que quiere: la dominación de Asgard. ",
+          img: "assets/img/loki.png",
+          aparicion: "1949-08-01",
+          casa: "Marvel"
+        },
+        {
+          nombre: "Fenix Oscura",
+          bio: "La Fuerza Fénix es una entidad ficticia que aparece en los cómics estadounidenses publicados por Marvel Comics. La entidad se ha vinculado con otros personajes y, a menudo, ha utilizado el alias Fénix mientras está vinculada.",
+          img: "assets/img/phoenix.png",
+          aparicion: "1976-10-01",
+          casa: "Marvel"
+        }
+];
+
     constructor(){
         console.log("Servicio listo para usar!!");
     }
@@ -66,14 +119,29 @@ export class HeroService {
         return this.hero;
     }
 
-    getHero(id:number){
-        return this.hero[id];   
+    getVillains():Hero[]{
+      return this.villain;
     }
 
+    getHero(id:number){
+        return this.hero[id];     
+    }
+
+    getVillain(id:number){
+      return this.villain[id];     
+  }
+
     buscarHeroe(palabra:string):Hero[]{
+    //  event.preventDefault()
       let heroArr:Hero[] = [];
       palabra = palabra.toLowerCase();
       for( let hero of this.hero){
+        let nombre = hero.nombre.toLowerCase();
+        if(nombre.indexOf(palabra)>=0){
+           heroArr.push(hero);
+        }
+      }
+      for( let hero of this.villain){
         let nombre = hero.nombre.toLowerCase();
         if(nombre.indexOf(palabra)>=0){
            heroArr.push(hero);

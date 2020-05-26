@@ -15,14 +15,24 @@ export class HeroesComponent implements OnInit {
   hero:Hero[]=[];
   constructor( private _heroService: HeroService, private _router: Router) { 
   }
-
+  tipo:boolean;
   ngOnInit(): void {
-    this.hero = this._heroService.getHeros();
+    if(this._router.url=="/villains"){
+      this.tipo=false;
+      this.hero = this._heroService.getVillains();
+    }else{
+      this.tipo=true;
+      this.hero = this._heroService.getHeros();
+    }
     console.log(this.hero);
   }
   
   verHeroe(id:number){
-    this._router.navigate(['/detalles',id]);
+    if(this.tipo){
+      this._router.navigate(['/hdetalles',id]);
+    }else{
+      this._router.navigate(['/vdetalles',id]);
+    }
   }
 
 
